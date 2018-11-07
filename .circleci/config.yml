@@ -1,13 +1,31 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+## Customize the test machine
+machine:
+
+    environment:
+        XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
+        GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (4CS6W5LV48)"
+
+    xcode:
+        version: 8.0
+
+## Customize dependencies
+dependencies:
+    pre:
+        - npm install -g typescript ionic cordova@6.4.0 ios-deploy ios-sim
+        - gem update fastlane
+
+    post:
+        - mkdir www
+        - ionic platform add ios
+
+## customize test commands
+test:
+    override:
+        - echo 'No tests to run'
+deployment:
+    beta_distribution:
+        branch: 'develop'
+        commands:
+            - ionic build ios --release
+
+- cp -R ./dist $CIRCLE_ARTIFACTS
