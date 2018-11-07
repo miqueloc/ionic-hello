@@ -1,30 +1,28 @@
 ## Customize the test machine
 machine:
-    environment:
-        XCODE_WORKSPACE: "platforms/ios/barcode-test.xcworkspace"
-        GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: BrieBug Software, Inc. (4CS6W5LV48)"
+    timezone:
+        Europe/Paris # Set the timezone
 
-    xcode:
-        version: 8.0
+    environment:
+        XCODE_SCHEME: symbolicator
+        XCODE_WORKSPACE: symbolicator
 
 ## Customize dependencies
 dependencies:
     pre:
-        - npm install -g typescript ionic cordova@6.4.0 ios-deploy ios-sim
-        - gem update fastlane
+        - npm install -g typescript typings ionic cordova ios-sim ios-deploy
+        - typings install
 
     post:
-        - mkdir www
         - ionic platform add ios
 
 ## customize test commands
 test:
     override:
-        - echo 'No tests to run'
+        - ionic cordova build ios --no-interactive
+
 deployment:
     beta_distribution:
-        branch: 'develop'
+        branch: 'master'
         commands:
-            - ionic build ios --release
-
-- cp -R ./dist $CIRCLE_ARTIFACTS
+            - cp -R ./dist $CIRCLE_ARTIFACTS
