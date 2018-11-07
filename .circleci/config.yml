@@ -16,6 +16,7 @@ jobs:
     docker: 
       - image: circleci/node:10.13.0
     steps:
+      - checkout
       - run:
           name: remove folders
           command: rm -rf plugins/ platforms/ www/
