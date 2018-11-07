@@ -1,28 +1,34 @@
-## Customize the test machine
+## Setup machine
 machine:
-    timezone:
-        Europe/Paris # Set the timezone
+  java:
+    version: 'oraclejdk8'
+  node:
+    version: v6.10.3
+  ruby:
+    version: 2.1.2
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
 
-    environment:
-        XCODE_SCHEME: symbolicator
-        XCODE_WORKSPACE: symbolicator
 
-## Customize dependencies
+## Setup dependencies
 dependencies:
-    pre:
-        - npm install -g typescript typings ionic cordova ios-sim ios-deploy
-        - typings install
+  pre:
+    - npm install -g ionic cordova
+    - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
+    - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
 
-    post:
-        - ionic platform add ios
+  cache_directories:
+    - /usr/local/android-sdk-linux/tools
+    - /usr/local/android-sdk-linux/build-tools/24.0.1
 
-## customize test commands
+  post:
+    - mkdir www
+    - ionic cordova platform add android -Y --noresources
+
 test:
-    override:
-        - ionic cordova build ios --no-interactive
+  pre:
+    - npm install
 
-deployment:
-    beta_distribution:
-        branch: 'master'
-        commands:
-            - cp -R ./dist $CIRCLE_ARTIFACTS
+  override:
+    - ionic cordova build android -Y
+    - cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
