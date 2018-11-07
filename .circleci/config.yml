@@ -1,20 +1,22 @@
-version: 2
-jobs:
-  prebuild:
-    docker:
-      - image: circleci/node:10.13.0
-    steps:
-      - run:
-          name: prebuild
-          command: echo "Running a prebuild"
-  build:
-    docker: 
-      - image: circleci/node:10.13.0
-    steps:
-      - checkout
-      - run:
-          name: installing dependencies
-          command: npm install
-      - run:
-          name: Runnning tests
-          command: npm test
+workflows:
+    version: 2
+    build-test-and-deploy:
+        jobs:
+        prebuild:
+            docker:
+            - image: circleci/node:10.13.0
+            steps:
+            - run:
+                name: prebuild
+                command: echo "Running a prebuild"
+        build:
+            docker: 
+            - image: circleci/node:10.13.0
+            steps:
+            - checkout
+            - run:
+                name: installing dependencies
+                command: npm install
+            - run:
+                name: Runnning tests
+                command: npm test
