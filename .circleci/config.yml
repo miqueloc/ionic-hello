@@ -15,7 +15,10 @@ jobs:
   build-android:
     docker:
       - image: circleci/node:10.13.0
-      - image: circleci/android:api-28-alpha 
+      - image: circleci/android:api-28-alpha
+    environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+      ANDROID_SDK_HOME: /usr/local/android-sdk-linux
     steps:
       - checkout
       - run:
