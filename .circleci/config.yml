@@ -38,26 +38,22 @@ jobs:
         - mkdir www
         - ionic cordova platform add android -Y --noresources
 
-    test:
-      pre:
-        - npm install
+    steps:
+      - checkout
+      - run:
+          name: remove folders
+          command: rm -rf plugins/ platforms/ www/
+      - run:
+            name: npm install
+            command: npm install
+      - run:
+          name: build android apk
+          command: ionic cordova build android --no-interactive
+      - run:
+          name: copy artifact
+          command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
 
-      override:
-        - ionic cordova build android -Y
-        - cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
-    # docker: 
-    #   - image: circleci/android:api-28-alpha
-    # steps:
-    #   - checkout
-    #   - run:
-    #       name: remove folders
-    #       command: rm -rf plugins/ platforms/ www/
-    #   - run:
-    #         name: npm install
-    #         command: npm install
-    #   - run:
-    #       name: build android apk
-    #       command: ionic cordova build android --no-interactive
+
 
 workflows:
   version: 2.1
