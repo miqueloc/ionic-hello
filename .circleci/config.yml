@@ -25,4 +25,6 @@ workflows:
   pre-and-build:
     jobs:
       - prebuild
-      - build
+      - build:
+          requires:
+            - prebuild
