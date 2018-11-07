@@ -36,7 +36,7 @@ jobs:
       # - run:
       #     name: copy artifact
       #     command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
-      - run: cd .. && ls
+      - run: cd ../.. && ls
 
 workflows:
   version: 2.1
