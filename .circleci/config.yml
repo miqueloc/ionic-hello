@@ -14,7 +14,7 @@ jobs:
             command: npm test
   build-android:
     docker: 
-      - image: circleci/node:10.13.0
+      - image: circleci/android:api-28-alpha
     steps:
       - checkout
       - run:
