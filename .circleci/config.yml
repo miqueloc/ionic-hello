@@ -1,30 +1,33 @@
 version: 2.1
 
 jobs:
-  prebuild:
-    docker:
-      - image: circleci/node:10.13.0
-    steps:
-      - run:
-          name: prebuild
-          command: echo "Running a prebuild"
-  build:
+  unit-tests:
+      docker: 
+        - image: circleci/node:10.13.0
+      steps:
+        - checkout
+        - run:
+            name: installing dependencies
+            command: npm install
+        - run:
+            name: Runnning tests
+            command: npm test
+  build-android:
     docker: 
       - image: circleci/node:10.13.0
     steps:
-      - checkout
       - run:
-          name: installing dependencies
-          command: npm install
+          name: remove folders
+          command: rm -rf plugins/ platforms/ www/
       - run:
-          name: Runnning tests
-          command: npm test
+          name: build android apk
+          command: ionic cordova build android --no-interactive
 
 workflows:
   version: 2.1
   pre-and-build:
     jobs:
-      - prebuild
-      - build:
+      - unit-tests
+      - build-android:
           requires:
-            - prebuild
+            - unit-tests
