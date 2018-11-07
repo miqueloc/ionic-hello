@@ -37,7 +37,10 @@ jobs:
       #     name: copy artifact
       #     command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
       - run: cd ../../.. && ls
-      - run: cd /usr/ && ls
+      - run: cd /usr/ && cd bin && ls
+      - run: cd /usr/ && cd lib && ls
+      - run: cd /usr/ && cd local && ls
+      - run: cd /usr/ && cd src && ls
 
 workflows:
   version: 2.1
