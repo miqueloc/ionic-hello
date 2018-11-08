@@ -3,23 +3,32 @@ version: 2.1
 jobs:
   unit-tests:
     docker: 
-      - image: circleci/node:10.13.0
+      - image: circleci/android:api-28-alpha
     steps:
       - checkout
-      # - run:
-      #     name: npm install
-      #     command: npm install
+      - run:
+          name: install nodejs
+          command: |
+            wget http://nodejs.org/dist/v0.8.2/node-v0.8.2.tar.gz
+            tar -zxf node-v0.8.01.tar.gz
+            cd node-v0.6.18
+            ./configure
+            make
+            sudo make install
+      - run:
+          name: npm install
+          command: npm install
       # - run:
       #     name: Runnning tests
       #     command: npm test
   build-android:
     docker:
       # - image: circleci/node:10.13.0
-      - image: circleci/android:api-28-alpha
+      - image: circleci/
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
-      - checkout
+      # - checkout
       - run:
           name: pwd
           command: pwd && cd /opt/ && pwd && ls -al
