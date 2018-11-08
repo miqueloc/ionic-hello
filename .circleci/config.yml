@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: Download Dependencies
-          command: ./gradlew
+          command: cd /opt/android/sdk && ls
       # - run:
       #     name: install nodejs
       #     command: |
