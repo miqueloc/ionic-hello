@@ -23,11 +23,14 @@ jobs:
           command: sudo npm install -g ionic cordova
       - checkout
       - run:
-          name: ls
-          command: ls
-      # - run:
-      #     name: npm install
-      #     command: npm install
+          name: npm install
+          command: npm install
+      - run:
+          name: build android apk
+          command: ionic cordova build android --no-interactive
+      - run:
+          name: copy artifact
+          command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
 
   build-android:
     docker:
@@ -36,9 +39,9 @@ jobs:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
       # - checkout
-      - run:
-          name: remove folders
-          command: rm -rf plugins/ platforms/ www/
+      # - run:
+      #     name: remove folders
+      #     command: rm -rf plugins/ platforms/ www/
       # - run:
       #       name: npm gobal
       #       command: node -v
