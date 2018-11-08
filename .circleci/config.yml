@@ -18,7 +18,7 @@ jobs:
             nodejs -v
       - run:
           name: npm gobal
-          command: sudo npm install -g ionic cordova
+          command: $pwd && sudo npm install -g ionic cordova
       - run:
           name: npm install
           command: npm install
