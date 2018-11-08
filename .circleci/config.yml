@@ -11,7 +11,7 @@ jobs:
     steps:
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: sudo chmod +x ./gradlew
       # - restore_cache:
       #     keys:
       #     - v1-dependencies-{{ checksum "build.gradle" }}
