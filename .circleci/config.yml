@@ -38,7 +38,7 @@ jobs:
       - run:
           name: store artifacts
           command: |
-            /home/circleci/code/platforms/android/build/outputs/apk/android-debug.apk > /tmp/androidbuild.apk;
+            mv /home/circleci/code/platforms/android/build/outputs/apk/android-debug.apk /tmp/androidbuild.apk;
       - store_artifacts:
           path: /tmp/androidbuild.apk
           destination: artifact-file
