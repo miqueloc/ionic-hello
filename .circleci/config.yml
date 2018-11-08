@@ -34,10 +34,11 @@ jobs:
       - run:
           name: build android apk
           command: ionic cordova build android --no-interactive
+      - run: cd /home/circleci/code/platforms/android/build/outputs/apk/ && ls
       - run:
           name: store artifacts
           command: |
-            /platforms/android/build/outputs/apk/android-debug.apk > /tmp/androidbuild.apk;
+            /home/circleci/code/platforms/android/build/outputs/apk/android-debug.apk > /tmp/androidbuild.apk;
       - store_artifacts:
           path: /tmp/androidbuild.apk
           destination: artifact-file
