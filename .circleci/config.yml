@@ -24,16 +24,13 @@ jobs:
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
-      # - checkout
-      - run:
-          name: pwd
-          command: pwd && cd /opt/ && pwd && ls -al
+      - checkout
       # - run:
       #     name: remove folders
       #     command: rm -rf plugins/ platforms/ www/
-      # - run:
-      #       name: npm gobal
-      #       command: sudo npm install -g ionic cordova
+      - run:
+            name: npm gobal
+            command: node -v
       # - run:
       #       name: npm install
       #       command: npm install
