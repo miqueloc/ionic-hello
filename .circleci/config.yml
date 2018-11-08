@@ -15,7 +15,7 @@ jobs:
           command: export PATH=$PATH:~/code/bin/gradle-4.10.2/bin
       - run:
           name: gradle test
-          command: gradle test
+          command: cd ~/code/bin/gradle-4.10.2/bin && ls
       # - run:
       #     name: install nodejs
       #     command: |
