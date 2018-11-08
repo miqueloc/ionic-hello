@@ -9,19 +9,19 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install nodejs
-        command: |
-          cd ~ 
-          curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
-          sudo bash nodesource_setup.sh
-          sudo apt-get install nodejs
-          nodejs -v
+          name: install nodejs
+          command: |
+            cd ~ 
+            curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+            sudo bash nodesource_setup.sh
+            sudo apt-get install nodejs
+            nodejs -v
       - run:
-        name: npm gobal
-        command: node install -g ionic cordova
+          name: npm gobal
+          command: node install -g ionic cordova
       - run:
-        name: npm install
-        command: npm install
+          name: npm install
+          command: npm install
 
   build-android:
     docker:
