@@ -16,7 +16,7 @@ jobs:
           command: wget https://services.gradle.org/distributions/gradle-4.6-bin.zip && unzip gradle-4.6-bin.zip -d ~/code/ && mv ~/code/gradle-4.6 ~/gradle
       - run:
           name: seth gradle path
-          command: echo 'export PATH=$PATH:$GRADLE_HOME/bin' >> $BASH_ENV && source $BASH_ENV
+          command: sudo echo 'export PATH=$PATH:$GRADLE_HOME/bin' >> $BASH_ENV && source $BASH_ENV
       - run: echo $PATH
       # - run:
       #     name: install nodejs
