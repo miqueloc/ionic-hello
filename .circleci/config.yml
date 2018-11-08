@@ -38,7 +38,7 @@ jobs:
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
-      # - checkout
+      - checkout
       # - run:
       #     name: remove folders
       #     command: rm -rf plugins/ platforms/ www/
