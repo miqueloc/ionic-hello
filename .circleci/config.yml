@@ -9,6 +9,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: pwd
+          command: pwd
+      - run:
           name: install nodejs
           command: |
             cd ~ 
@@ -16,6 +19,12 @@ jobs:
             sudo bash nodesource_setup.sh
             sudo apt-get install nodejs
             nodejs -v
+      - run:
+          name: pwd
+          command: pwd
+      - run:
+          name: cd opt
+          command: cd /home/
       - run:
           name: npm gobal
           command: $pwd && sudo npm install -g ionic cordova
