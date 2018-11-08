@@ -4,25 +4,25 @@ jobs:
   unit-tests:
     docker: 
       - image: circleci/android:api-28-alpha
+    environment:
+      ANDROID_SDK_HOME: /opt/android/sdk
     steps:
       - checkout
       - run:
-          name: install nodejs
-          command: |
-            cd ~ 
-            curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
-            sudo bash nodesource_setup.sh
-            sudo apt-get install nodejs
-            nodejs -v
+        name: install nodejs
+        command: |
+          cd ~ 
+          curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+          sudo bash nodesource_setup.sh
+          sudo apt-get install nodejs
+          nodejs -v
       - run:
-          name: versionn
-          command: node -v
-      # - run:
-      #     name: npm install
-      #     command: npm install
-      # - run:
-      #     name: Runnning tests
-      #     command: npm test
+        name: npm gobal
+        command: node install -g ionic cordova
+      - run:
+        name: npm install
+        command: npm install
+
   build-android:
     docker:
       - image: circleci/node:10.13.0
