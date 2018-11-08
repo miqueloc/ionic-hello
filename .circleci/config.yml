@@ -8,11 +8,9 @@ jobs:
       - checkout
       - run:
           name: install nodejs
-          command: |
-            curl -sL https://deb.nodesource.com/setup_10.x
-            sudo apt-key add -
-            apt update
-            apt install nodejs
+          command: mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master
+          tar xz --strip 1 -C homebrew
+          brew -v
       - run:
           name: npm install
           command: npm install
