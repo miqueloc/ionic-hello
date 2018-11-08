@@ -17,30 +17,30 @@ jobs:
       - image: circleci/node:10.13.0
       - image: circleci/android:api-28-alpha
     environment:
-      ANDROID_HOME: /opt/android/sdk
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
       - checkout
-      # - run:
-      #     name: remove folders
-      #     command: rm -rf plugins/ platforms/ www/
-      # - run:
-      #       name: npm gobal
-      #       command: sudo npm install -g ionic cordova
-      # - run:
-      #       name: npm install
-      #       command: npm install
-      # - run:
-      #     name: build android apk
-      #     command: ionic cordova build android --no-interactive
-      # - run:
-      #     name: copy artifact
-      #     command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
-      - run: cd ../../.. && ls
-      - run: cd /usr/ && cd bin && ls
-      - run: cd /usr/ && cd lib && ls
-      - run: cd /usr/ && cd local && ls
-      - run: cd /usr/ && cd src && ls
+      - run: pwd
+      - run:
+          name: remove folders
+          command: rm -rf plugins/ platforms/ www/
+      - run:
+            name: npm gobal
+            command: sudo npm install -g ionic cordova
+      - run:
+            name: npm install
+            command: npm install
+      - run:
+          name: build android apk
+          command: ionic cordova build android --no-interactive
+      - run:
+          name: copy artifact
+          command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
+      # - run: cd ../../.. && ls
+      # - run: cd /usr/ && cd bin && ls
+      # - run: cd /usr/ && cd lib && ls
+      # - run: cd /usr/ && cd local && ls
+      # - run: cd /usr/ && cd src && ls
 
 workflows:
   version: 2.1
