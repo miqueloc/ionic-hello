@@ -20,22 +20,24 @@ jobs:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
       - checkout
-      - run: pwd
       - run:
-          name: remove folders
-          command: rm -rf plugins/ platforms/ www/
-      - run:
-            name: npm gobal
-            command: sudo npm install -g ionic cordova
-      - run:
-            name: npm install
-            command: npm install
-      - run:
-          name: build android apk
-          command: ionic cordova build android --no-interactive
-      - run:
-          name: copy artifact
-          command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
+          name: pwd
+          command: pwd
+      # - run:
+      #     name: remove folders
+      #     command: rm -rf plugins/ platforms/ www/
+      # - run:
+      #       name: npm gobal
+      #       command: sudo npm install -g ionic cordova
+      # - run:
+      #       name: npm install
+      #       command: npm install
+      # - run:
+      #     name: build android apk
+      #     command: ionic cordova build android --no-interactive
+      # - run:
+      #     name: copy artifact
+      #     command: cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
       # - run: cd ../../.. && ls
       # - run: cd /usr/ && cd bin && ls
       # - run: cd /usr/ && cd lib && ls
