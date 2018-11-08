@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: Download Dependencies
-          command: sdk install gradle 4.10.2
+          command: sdkmanager --update
       # - run:
       #     name: install nodejs
       #     command: |
