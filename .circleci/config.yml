@@ -7,7 +7,6 @@ jobs:
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
-      - checkout
       - run:
           name: pwd
           command: pwd
@@ -20,14 +19,9 @@ jobs:
             sudo apt-get install nodejs
             nodejs -v
       - run:
-          name: pwd
-          command: pwd
-      - run:
-          name: cd opt
-          command: cd /home/
-      - run:
           name: npm gobal
-          command: $pwd && sudo npm install -g ionic cordova
+          command: sudo npm install -g ionic cordova
+      - checkout
       - run:
           name: npm install
           command: npm install
