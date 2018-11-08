@@ -6,21 +6,21 @@ jobs:
       - image: circleci/android:api-28-alpha
     steps:
       - checkout
-      - run:
-          name: install nodejs
-          command: mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master
-            tar xz --strip 1 -C homebrew
-            brew -v
-      - run:
-          name: npm install
-          command: npm install
+      # - run:
+      #     name: install nodejs
+      #     command: mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master
+      #       tar xz --strip 1 -C homebrew
+      #       brew -v
+      # - run:
+      #     name: npm install
+      #     command: npm install
       # - run:
       #     name: Runnning tests
       #     command: npm test
   build-android:
     docker:
-      # - image: circleci/node:10.13.0
-      - image: circleci/
+      - image: circleci/android:api-28-alpha
+      - image: circleci/node:10.13.0
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
