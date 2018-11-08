@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: Download Dependencies
-          command: cd /opt/android/sdk && ls
+          command: sdk install gradle 4.10.2
       # - run:
       #     name: install nodejs
       #     command: |
