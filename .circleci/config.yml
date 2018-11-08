@@ -7,15 +7,16 @@ jobs:
       - image: circleci/android:api-28-alpha
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk 
-      JVM_OPTS: -Xmx3200m
+      GRADLE_HOME: ~/gradle
     steps:
       - checkout
       - run:
           name: install gradle
-          command: export PATH=$PATH:~/code/bin/gradle-4.10.2/bin
+          command: wget https://services.gradle.org/distributions/gradle-4.6-bin.zip && unzip gradle-4.6-bin.zip -d ~/code/ && mv ~/code/gradle-4.6 ~/
       - run:
-          name: gradle test
-          command: cd ~/code/bin/gradle-4.10.2/bin && ls
+          name: seth gradle path
+          command: PATH $PATH:$GRADLE_HOME/bin
+      - run: gradle test
       # - run:
       #     name: install nodejs
       #     command: |
