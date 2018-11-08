@@ -16,7 +16,7 @@ jobs:
       - run:
           name: seth gradle path
           command: export PATH=$PATH:$GRADLE_HOME/bin
-      - run: gradle test
+      - run: ~/gradle/bin/gradle test
       # - run:
       #     name: install nodejs
       #     command: |
