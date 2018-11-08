@@ -11,11 +11,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Download Dependencies
-          command: ls
-      - run:
           name: install gradle
           command: export PATH=$PATH:~/code/bin/gradle-4.10.2/bin
+      - run:
+          name: gradle test
+          command: gradle test
       # - run:
       #     name: install nodejs
       #     command: |
