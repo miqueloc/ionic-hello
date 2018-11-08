@@ -21,15 +21,14 @@ jobs:
       #     command: npm test
   build-android:
     docker:
-      # - image: circleci/android:api-28-alpha
       - image: circleci/node:10.13.0
     environment:
       ANDROID_SDK_HOME: /opt/android/sdk
     steps:
       # - checkout
-      # # - run:
-      # #     name: remove folders
-      # #     command: rm -rf plugins/ platforms/ www/
+      - run:
+          name: remove folders
+          command: rm -rf plugins/ platforms/ www/
       # - run:
       #       name: npm gobal
       #       command: node -v
