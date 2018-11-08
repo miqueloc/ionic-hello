@@ -6,13 +6,16 @@ jobs:
     docker: 
       - image: circleci/android:api-28-alpha
     environment:
-      ANDROID_SDK_HOME: /opt/android/sdk
+      ANDROID_SDK_HOME: /opt/android/sdk 
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
       - run:
           name: Download Dependencies
           command: ls
+      - run:
+          name: install gradle
+          command: export PATH=$PATH:~/code/bin/gradle-4.10.2/bin
       # - run:
       #     name: install nodejs
       #     command: |
