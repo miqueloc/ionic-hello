@@ -11,7 +11,7 @@ jobs:
     steps:
       - run:
           name: Download Dependencies
-          command: cd .. && ls
+          command: ls
       # - run:
       #     name: install nodejs
       #     command: |
