@@ -8,13 +8,7 @@ jobs:
       - checkout
       - run:
           name: install nodejs
-          command: |
-            wget http://nodejs.org/dist/v0.8.2/node-v0.8.2.tar.gz
-            tar -zxf node-v0.8.01.tar.gz
-            cd node-v0.6.18
-            ./configure
-            make
-            sudo make install
+          command: apt-get install nodejs
       - run:
           name: npm install
           command: npm install
