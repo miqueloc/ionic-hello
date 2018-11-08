@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: install gradle
-          command: wget https://services.gradle.org/distributions/gradle-4.6-bin.zip && unzip gradle-4.6-bin.zip -d ~/code/ && mv ~/code/gradle-4.6 ~/
+          command: wget https://services.gradle.org/distributions/gradle-4.6-bin.zip && unzip gradle-4.6-bin.zip -d ~/code/ && mv ~/code/gradle-4.6 ~/gradle
       - run:
           name: seth gradle path
           command: cd ~/ && ls
