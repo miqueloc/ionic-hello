@@ -9,7 +9,7 @@ jobs:
       ANDROID_SDK_HOME: /opt/android/sdk 
       GRADLE_HOME: ~/gradle
       BASH_ENV: ~/.bashrc
-      PATH: $GRADLE_HOME/bin
+      PATH: $PATH:~/gradle/bin
     steps:
       - checkout
       - run:
