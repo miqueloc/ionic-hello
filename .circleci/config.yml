@@ -8,7 +8,10 @@ jobs:
       - checkout
       - run:
           name: install nodejs
-          command: sudo apt-get install nodejs
+          command: |
+          curl -sL https://deb.nodesource.com/setup_10.x 
+          sudo -E bash -
+          sudo apt-get install -y nodejs
       - run:
           name: npm install
           command: npm install
