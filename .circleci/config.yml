@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run:
           name: pwd
-          command: pwd
+          command: pwd && cd /opt/ && ls -al
       # - run:
       #     name: remove folders
       #     command: rm -rf plugins/ platforms/ www/
