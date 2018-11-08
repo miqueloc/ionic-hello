@@ -8,18 +8,13 @@ jobs:
       ANDROID_SDK_HOME: /opt/android/sdk
       JVM_OPTS: -Xmx3200m
     steps:
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: pwd
-          command: pwd
+          command: |
+            echo y 
+            android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
+            echo y
+            android update sdk --no-ui --all --filter build-tools-25.0.0
       - run:
           name: install nodejs
           command: |
